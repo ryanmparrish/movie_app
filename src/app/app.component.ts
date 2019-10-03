@@ -32,19 +32,23 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.moviesService.getMovies().subscribe(movies => {
       this.movies = movies;
-
       // console.log('movies.Search', movies.Search);
-      let finalData = [];
-      for ( var index in movies.Search ) {
-        this.moviesService.getMovieData(movies.Search[index].imdbID).subscribe(data => {
-          finalData.push(Object.assign( {}, movies.Search[index], data ));
-        });
-      }
-      this.moviesFull = finalData;
-      // console.log('finalData', finalData);
+      this.getMovieDeets(movies['Search']);
     });
   }
 
+  getMovieDeets(movies){
+    let finalData = [];
+    if(movies){
+      for ( var i in movies ) {
+        this.moviesService.getMovieData(movies[i].imdbID).subscribe(data => {
+          finalData.push(Object.assign( {}, movies[i], data ));
+        });
+      }
+      this.moviesFull = finalData;
+    }
+    // console.log('finalData', finalData);
+  }
 
   getMovieImageName(url) {
     let parsedURL = new URL(url),

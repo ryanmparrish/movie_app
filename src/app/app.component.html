@@ -112,11 +112,12 @@
             <span class="type">{{ movie.value['Type'] }}</span>
             &nbsp;
             <span class="runtime">{{ movie.value['Runtime'] }}</span>
+
           </div>
           <div class="year">{{ movie.value['DVD'] }}</div>
         </div>
         <div class="card-desc">
-          <p>{{movie.value['Plot']}}</p>git branch --set-upstream master origin/mastergit branch --set-upstream master origin/master
+          <p>{{movie.value['Plot']}}</p>
           <div class="text-green" *ngIf="movie.value['BoxOffice'] !== 'N/A'">{{movie.value['BoxOffice']}}</div>
           <a *ngIf="movie.value['Website'] !== 'N/A'" href="{{movie.value['Website']}}">Website</a>
           <!--<div class="stars">{{movie|json}}</div>-->
